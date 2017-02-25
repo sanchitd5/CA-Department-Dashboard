@@ -76,12 +76,12 @@
         
 $(document).ready(function()
 {
-	$('.messageX a').click(function(){
+	$('.messageX a').on('touchend',function(){
 	   $('.formX').animate({height: "toggle", opacity: "toggle"}, "slow");
 	});
 
 	
-        $('#login').click(function()
+        $('#login').on('touchend',function()
 	{
 	       log_in();	
 	});
