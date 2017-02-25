@@ -1,0 +1,208 @@
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="style/dash_fixer.css"  media="screen,projection/> 
+	     
+
+</head>
+<body class="grey lighten-4 Bfooter-fix">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="materialize/js/materialize.js"></script>
+
+	
+<header class="alignment-fixer">
+      <div class="navbar-fixed">  
+	<nav class="black" role="navigation">
+	 <a id="logo-container" href="#" class="brand-logo valign-wrapper">
+				<img src="images/cu_logo.png" alt="Logo Main">
+			</a>
+	     <ul class="side-nav fixed hide-on-med-and-down">
+		<li><div class="userView">
+			<div class="background">
+        			<img src="images/admin_back.jpg" />
+			</div>
+    			<a href="#!user"><img class="circle" src="images/admin.png"><span class="white-text name"><?php echo $_SESSION['name']; ?></span></a>
+    		</div></li>
+ 		<li class="bold active" ><a id="about_button" href="#"><span class="black-text name">About</span><i class="material-icons">input</i></a></li>
+      		<li class="bold"><a id="navbar-editor_button" href="#"><span class="black-text name">Navbar Editor</span><i class="material-icons">settings</i></a></li>
+      		<li class="bold"><a href="http://squareonefeedback.com/CA_dept/scripts/logout.php"><span class="black-text name">Logout</span><i class="material-icons">settings_power</i></a></li>
+      	     </ul>
+      		      <a href="#" data-activates="nav-side" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  </div>
+      <ul id="nav-side" class="side-nav white">
+	<li><div class="userView">
+		<div class="background">
+	        <img src="images/admin_back.jpg">
+      		</div><br><br>
+       		<a href="#!user"><img class="circle" src="images/admin.png"></a>
+      		<a href="#!name"><span class="white-text name"><?php echo $_SESSION['name']; ?></span></a>
+    	</div></li>
+      <li class="bold active" ><a  id="about_buttonM" href="#"><span class="black-text name">About</span><i class="material-icons">input</i></a></li>
+      <li class="bold"><a id="navbar-editor_buttonM" href="#"><span class="black-text name">Navbar Editor</span><i class="material-icons">settings</i></a></li>
+      <li class="bold"><a href="http://squareonefeedback.com/CA_dept/scripts/logout.php"><span class="black-text name">Logout</span><i class="material-icons">settings_power</i></a></li>
+      </ul>
+      
+
+</header>
+<main class="footer-fix alignment-fixer grey lighten-3">
+      <div id="about-panel"  class="container center">
+       <br><br>
+       <div class="carousel carousel-slider center" data-indicators="true">
+    <div class="carousel-item red white-text" href="#one!">
+      <h2>Welcome to Computer Applications Dashboard</h2>
+      <p class="white-text">This project is about the content management mechanism built using a material design approach for the department itself i.e. Department of Computer Applications, Chitkara University. We are mainly focusing on the languages which are HTML for providing the basic structure to the Portal, jQuery for giving the application the runtime changes, CSS for the design of the application and jQuery AJAX and PHP will be used for database connectivity.</p>
+    </div>
+    <div class="carousel-item amber white-text" href="#two!">
+      <h2>What is our Proposed System?</h2>
+      <p class="white-text">This project is brought forward to make the department’s web portal dynamic and allow the end user to easily manage the content without even interfering with the backend code used to make main interface. The website will be dynamic and will be enhanced periodically. It will be online and will be in alpha stage once the basic structure is acquired. The concept of linking our modular project to any kind of object present in the college.
+ 
+</p>
+    </div>
+    <div class="carousel-item green white-text" href="#three!">
+      <h2>Scope of Project</h2>
+      <p class="white-text">This will make the department portal dynamic as well as it will enable the department members to control the content of the main interface from the admin panel. An interaction between the department authorities will help in improving and scaling the imaginable growth for the Department of Computer Application, Chitkara University.</p>
+    </div>
+    <div class="carousel-item blue white-text" href="#four!">
+      <h2>Features.</h2>
+      <p class="white-text"><ul class="browser-default">
+      <li>Dynamic Website in which content can be managed without interfering with the backend code.</li>
+	<li>Separate and secured login for the Administrator.</li>
+
+<li>Administrator can further add users for the content management purpose.</li>
+
+<li>Addition/Deletion of the available navigation bars.</li></ul></p>
+    </div>
+  </div>
+      </div>      
+	<div id="navbar-panel"  class="container">
+	<br><br>
+	<p class="flow-text center">Click on the nav buttons to edit the navbars</p>
+	<nav class="black">
+	    <div class="nav-wrapper container">
+			
+			<ul id="nav-editor1" class="right">
+			<li><a class ='white-text name waves-effect waves-light' href='#' id='add_nav'>+</a></li>
+			</ul>
+			</div>
+		</nav>
+		
+		<div id="nav-editor_panel" class="card">
+            <div class="card-content black-text">
+              <span class="card-title"></span>
+            <div class="row">
+        <div class="white input-field col s6">
+          <input id="nav_object_title" type="text" class="validate">
+          <label for="nav_object_title">Navbar Title</label>
+        </div>
+        <div class="white input-field col s6">
+          <input id="object_id" type="text" class="validate">
+          <label for="object_id">Navbar ID</label>
+        </div>
+            </div>
+            <div class="card-action">
+              <a href="#">Update</a>
+              <a href="#">Delete</a>
+            </div>
+          </div>
+        
+	</div>
+</main>
+<footer class="alignment-fixer fixed page-footer grey">
+	<div class="footer-copyright black">
+            <div class="container center">
+          Created by 1410992149 1410992138 1410992136
+            </div>
+	</div>
+</footer>
+
+	
+<script>
+$( document ).ready(function(){
+    $('.button-collapse').sideNav({
+      menuWidth: 300,
+      edge: 'left',
+      closeOnClick: true,
+      draggable: true
+    });
+});
+</script>
+<script>
+function initial()
+{
+$("#about-panel").show(100,function(){});
+$("#nav-editor_panel").hide();
+$("#navbar-panel").hide();
+$('.carousel.carousel-slider').carousel({fullWidth: true});
+}
+
+</script>
+<script>
+
+function load_nav()
+{
+$.getJSON("http://squareonefeedback.com/CA_dept/scripts/navbar_retriever.php",function(result){
+	
+	$.each(result, function(i, field){
+		$('#nav-editor1').prepend("<li><a class ='tooltipped white-text name waves-effect waves-light' href='#' id='"+field.object_id+"' data-position='bottom' data-delay='50' data-tooltip='"+field.discription+"' data-id='navbar_item'>"+field.title+"</a></li>");
+	});
+});
+$('.tooltipped').tooltip({delay: 50});
+$("#nav-editor1>li").on('click',function(){
+	$("#navbar-panel").show(100,function(){});
+});
+}
+initial();
+
+$(document).ready(function(){
+
+	$("#navbar-editor_buttonM").click(function(){
+		$(this).parentsUntil('ul').children('li').removeClass('active');
+		$(this).closest('li').attr('class','bold active');
+		$("#about-panel").hide();
+                load_nav();
+		$("#navbar-panel").show(100,function(){});	
+		return false;
+	});
+	$("#about_buttonM").click(function(){
+		$(this).parentsUntil('ul').find('li').attr('class','bold');
+		$(this).closest('li').attr('class','bold active');
+		initial();
+		return false;
+	});
+	$("#navbar-editor_button").click(function(){
+		$(this).parentsUntil('ul').children('li').removeClass('active');
+		$(this).closest('li').attr('class','bold active');
+		$("#about-panel").hide();
+                load_nav();
+		$("#navbar-panel").show(100,function(){});
+		return false;
+	});
+	$("#about_button").click(function(){
+		$(this).parentsUntil('ul').find('li').attr('class','bold');
+		$(this).closest('li').attr('class','bold active');
+		initial();
+		return false;
+	});
+	$(document).on('click','a[data-id=navbar_item]',function()
+	{
+		
+		$("#nav-editor_panel").show();
+		var oji=$(this).attr("id");
+		$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_edit_retriver.php",{objectid:oji},function(response)
+		{
+			$('#nav_object_title').val(response.title);
+			$('#object_id').val(response.object_id);
+		},'json');
+	});
+});
+</script>
+</body>
+
+
+
+</html>

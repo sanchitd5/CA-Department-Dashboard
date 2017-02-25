@@ -1,0 +1,101 @@
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="materialize/css/jquery-ui.min.css"/>
+<link type="text/css" rel="stylesheet" href="style/login.css"/>      
+   
+    </head>
+    <body background="images/background.jpg">
+    
+      <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+      <script type="text/javascript" src="materialize/js/init.js"></script>
+	   <script type="text/javascript" src="cordova.js"></script>
+<header>
+	<div class="navbar-fixed">  
+	<nav class="black" role="navigation">
+		<div class="nav-wrapper container">
+			<a id="logo-container" href="#" class="brand-logo">
+				<img src="images/cu_logo.png" alt="Logo Main">
+			</a>
+			<div class="right hide-on-med-and-down">
+				Admin Panel - Department of Computer Applications
+			</div>
+		</div>
+
+	</nav>
+	</div>
+</header>
+<main>
+<div class="container">
+<div class="login-pageX">
+  <div class="formX">
+    <form class="login-formX" id="login_form">
+ 	<label class="flow-text">LOG IN</label><br><br>
+      <input type="text" placeholder="username" id="username"/>
+      <input type="password" placeholder="password" id="password"/>
+      <button class="red waves-effect waves-light" type="button" id="login"><span class="white-text name">Login</span></button>
+    </form>
+  </div>
+</div>
+</div></main>
+<script>
+        function log_in()
+        {
+                var username=$('input#username').val();
+		var password=$('input#password').val();
+                if(username.length==0)
+                {
+                    alert("Please enter Username");
+                    $('input#username').focus();
+                }
+                else if(password.length==0)
+                {
+                    alert("Please enter Password");
+                    $('input#password').focus();
+                }
+                else
+                {
+		    $.post("http://squareonefeedback.com/CA_dept/scripts/login.php",{user:username,pass:password},function(response)
+	   	    {
+			if(response=="true")
+			{
+                                document.getElementById("login_form").reset();
+				window.location="dashboard.html";
+			}
+			else if(response="false")
+			{
+				alert("username or password incorrect");
+			}
+		    });
+                }
+        }
+        
+$(document).ready(function()
+{
+	$('.messageX a').click(function(){
+	   $('.formX').animate({height: "toggle", opacity: "toggle"}, "slow");
+	});
+
+	
+        $('#login').click(function()
+	{
+	       log_in();	
+	});
+
+        $(document).keypress(function (e)
+        {
+              if (e.which == 13)
+              {
+                    log_in();
+        
+              }
+        });
+});
+</script>
+
+</body>
+</html>
