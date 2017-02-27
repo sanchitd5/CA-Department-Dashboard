@@ -43,6 +43,7 @@
 </div>
 </div></main>
 <script>
+window.localStorage.setItem("login_session", "false");
         function log_in()
         {
                 var username=$('input#username').val();
@@ -63,6 +64,8 @@
 	   	    {
 			if(response=="true")
 			{
+				window.localStorage.setItem("username", username);
+				window.localStorage.setItem("login_session", "true");
                                 document.getElementById("login_form").reset();
 				window.location="dashboard.html";
 			}
