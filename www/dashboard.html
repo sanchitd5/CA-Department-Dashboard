@@ -195,6 +195,16 @@ $(document).ready(function(){
 			$('#nav_object_title').val(response.title);
 			$('#object_id').val(response.object_id);
 		},'json');
+		$(document).on('touchend','a#update_navitem_button',function()
+		{
+			var oji=$('input#object_id').val();
+			var ojt=$('input#nav_object_title').val();
+			$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_update.php",{objectid:oji,objectTitle:ojt},function(response)
+			{
+				load_nav();
+			});
+			$("#nav-editor_panel").hide();
+		});
 	});
 });
 </script>
