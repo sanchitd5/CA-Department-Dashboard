@@ -129,85 +129,111 @@ $( document ).ready(function(){
 });
 </script>
 <script>
-function initial()
-{
-$("#about-panel").show(100,function(){});
-$("#nav-editor_panel").hide();
-$("#navbar-panel").hide();
-$('.carousel.carousel-slider').carousel({fullWidth: true});
-}
-
-</script>
-<script>
-
-function load_nav()
-{
-$.getJSON("http://squareonefeedback.com/CA_dept/scripts/navbar_retriever.php",function(result){
-	$('#nav-editor1').html('');
-	$.each(result, function(i, field){
-		$('#nav-editor1').append("<li><a class ='tooltipped white-text name waves-effect waves-light' href='#' id='"+field.object_id+"' data-position='bottom' data-delay='50' data-tooltip='"+field.discription+"' data-id='navbar_item'>"+field.title+"</a></li>");
-	});
-});
-$('.tooltipped').tooltip({delay: 50});
-$("#nav-editor1>li").on('touchend',function(){
-	$("#navbar-panel").show(100,function(){});
-});
-}
-initial();
-
-$(document).ready(function(){
-
-	$("#navbar-editor_buttonM").on('touchend',function(){
-		$(this).parentsUntil('ul').children('li').removeClass('active');
-		$(this).closest('li').attr('class','bold active');
-		$("#about-panel").hide();
-                load_nav();
-		$("#navbar-panel").show(100,function(){});	
-		return false;
-	});
-	$("#about_buttonM").on('touchend',function(){
-		$(this).parentsUntil('ul').find('li').attr('class','bold');
-		$(this).closest('li').attr('class','bold active');
-		initial();
-		return false;
-	});
-	$("#navbar-editor_button")on('touchend',function(){
-		$(this).parentsUntil('ul').children('li').removeClass('active');
-		$(this).closest('li').attr('class','bold active');
-		$("#about-panel").hide();
-                load_nav();
-		$("#navbar-panel").show(100,function(){});
-		return false;
-	});
-	$("#about_button")on('touchend',function(){
-		$(this).parentsUntil('ul').find('li').attr('class','bold');
-		$(this).closest('li').attr('class','bold active');
-		initial();
-		return false;
-	});
-	$(document).on('touchend','a[data-id=navbar_item]',function()
-	{
-		
-		$("#nav-editor_panel").show();
-		var oji=$(this).attr("id");
-		$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_edit_retriver.php",{objectid:oji},function(response)
-		{
-			$('#nav_object_title').val(response.title);
-			$('#object_id').val(response.object_id);
-		},'json');
-		$(document).on('touchend','a#update_navitem_button',function()
-		{
-			var oji=$('input#object_id').val();
-			var ojt=$('input#nav_object_title').val();
-			$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_update.php",{objectid:oji,objectTitle:ojt},function(response)
+		function load_nav()
 			{
-				load_nav();
+			$.getJSON("http://squareonefeedback.com/CA_dept/scripts/navbar_retriever.php",function(result){
+				$('#nav-editor1').html('');
+				$.each(result, function(i, field){
+					$('#nav-editor1').append("<li><a class ='tooltipped white-text name waves-effect waves-light' href='#' id='"+field.object_id+"' data-position='bottom' data-delay='50' data-tooltip='"+field.discription+"' data-id='navbar_item'>"+field.title+"</a></li>");
+				});
 			});
-			$("#nav-editor_panel").hide();
+			$('.tooltipped').tooltip({delay: 50});
+			$("#nav-editor1>li").on('click',function(){
+				$("#navbar-panel").show(100,function(){});
+			});
+		}
+		initial();
+			
+		$(document).ready(function(){
+				
+		$("#frontslider-editor_button").click(function(){
+				$(this).parentsUntil('ul').children('li').removeClass('active');
+				$(this).closest('li').attr('class','bold active');
+				initial();
+				$("#about-panel").hide();
+				
+		                
+				$("#front-image-slider-panel").show(100,function(){});	
+				return false;
+				});
+			$("#frontslider-editor_buttonM").click(function(){
+				$(this).parentsUntil('ul').children('li').removeClass('active');
+				$(this).closest('li').attr('class','bold active');
+				initial();
+				$("#about-panel").hide();               
+				$("#front-image-slider-panel").show(100,function(){});	
+				return false;
+			});
+			$("#navbar-editor_buttonM").click(function(){
+				$(this).parentsUntil('ul').children('li').removeClass('active');
+				$(this).closest('li').attr('class','bold active');
+				initial();
+				$("#about-panel").hide();
+		                load_nav();
+				$("#navbar-panel").show(100,function(){});	
+				return false;
+			});
+			$("#navbar-editor_button").click(function(){
+				$(this).parentsUntil('ul').children('li').removeClass('active');
+				$(this).closest('li').attr('class','bold active');
+				initial();
+				$("#about-panel").hide();
+		                load_nav();
+				$("#navbar-panel").show(100,function(){});
+				return false;
+			});
+			$("#about_buttonM").click(function(){
+				$(this).parentsUntil('ul').find('li').attr('class','bold');
+				$(this).closest('li').attr('class','bold active');
+				initial();
+				return false;
+			});
+			$("#about_button").click(function(){
+				$(this).parentsUntil('ul').find('li').attr('class','bold');
+				$(this).closest('li').attr('class','bold active');
+				initial();
+				return false;
+			});
+			$(document).on('click','a[data-id=navbar_item]',function()
+			{
+				
+				$("#nav-editor_panel").show();
+				var oji=$(this).attr("id");
+				$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_edit_retriver.php",{objectid:oji},function(response)
+				{
+					$('#nav_object_title').val(response.title);
+					$('#object_id').val(response.object_id);
+					$('#nav_object_discription').val(response.discription);
+				},'json');
+			});
+			$(document).on('click','a#update_navitem_button',function()
+			{
+				
+				var oji=$('input#object_id').val();
+				var ojt=$('input#nav_object_title').val();
+				var ojd=$('#nav_object_discription').val();
+				
+				/*var test_data=/^[a-zA-Z]{1,20}$/;
+				var result=test_data.test(ojt);
+				if(result)
+				{
+						alert("Worng Input");
+						$('input#nav_object_title').focus();	
+				}*/
+				//else
+				//{
+					$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_update.php",{objectid:oji,objectTitle:ojt,objectDisc:ojd},function(response)
+					{
+						load_nav();
+						Materialize.toast('Data Saved', 4000);
+						
+					});
+					$("#nav-editor_panel").hide();
+				//}
+			});
+		
 		});
-	});
-});
-</script>
+	</script>
 </body>
 
 
