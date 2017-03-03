@@ -353,6 +353,21 @@
 					$("#nav-editor_panel").hide();
 					//}
 				});
+				$(document).on('click','.collapsible-header',function(event)
+				{
+					var index_val= $('.collapsible-header').index(this);
+					$.getJSON("http://squareonefeedback.com/CA_dept/scripts/front_image_data_retiver.php",function(result){
+						var heading=[];
+						var desp=[];
+						$.each(result,function(i,feild){
+							heading[i]=feild.main_heading;
+							desp[i]=feild.discription;
+						});
+						
+						$(event.target).next().find('input:text:eq(0)').val(heading[index_val]);
+						$(event.target).next().find('textarea').val(desp[index_val]);
+					});
+				});
 			
 			});
 		</script>
