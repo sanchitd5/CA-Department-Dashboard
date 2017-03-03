@@ -353,7 +353,7 @@
 					$("#nav-editor_panel").hide();
 					//}
 				});
-				$(document).on('click','.collapsible-header',function(event)
+				$(document).on('touchend','.collapsible-header',function(event)
 				{
 					var index_val= $('.collapsible-header').index(this);
 					$.getJSON("http://squareonefeedback.com/CA_dept/scripts/front_image_data_retiver.php",function(result){
