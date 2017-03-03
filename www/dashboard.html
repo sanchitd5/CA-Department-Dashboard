@@ -119,44 +119,50 @@
 
 	
 <script>
+function initial()
+{
+	$("#about-panel").show(100,function(){});
+	$("#front-image-slider-panel").hide();
+	$("#navbar-panel").hide();
+	$("mainbar-panel").hide();
+	$('.carousel.carousel-slider').carousel({fullWidth: true});
+}
+function load_nav()
+{
+	$.getJSON("http://squareonefeedback.com/CA_dept/scripts/navbar_retriever.php",function(result){
+		$('#nav-editor1').html('');
+		$.each(result, function(i, field){
+			$('#nav-editor1').append("<li><a class ='tooltipped white-text name waves-effect waves-light' href='#' id='"+field.object_id+"' data-position='bottom' data-delay='50' data-tooltip='"+field.discription+"' data-id='navbar_item'>"+field.title+"</a></li>");
+		});
+	});
+	$('.tooltipped').tooltip({delay: 50});
+	$("#nav-editor1>li").on('click',function(){
+		$("#navbar-panel").show(100,function(){});
+	});
+}
 $( document ).ready(function(){
-    $('.button-collapse').sideNav({
+initial();    
+$('.button-collapse').sideNav({
       menuWidth: 300,
       edge: 'left',
       closeOnClick: true,
       draggable: true
-    });
+ });
+
 });
 </script>
-<script>
-		function load_nav()
-			{
-			$.getJSON("http://squareonefeedback.com/CA_dept/scripts/navbar_retriever.php",function(result){
-				$('#nav-editor1').html('');
-				$.each(result, function(i, field){
-					$('#nav-editor1').append("<li><a class ='tooltipped white-text name waves-effect waves-light' href='#' id='"+field.object_id+"' data-position='bottom' data-delay='50' data-tooltip='"+field.discription+"' data-id='navbar_item'>"+field.title+"</a></li>");
-				});
-			});
-			$('.tooltipped').tooltip({delay: 50});
-			$("#nav-editor1>li").on('click',function(){
-				$("#navbar-panel").show(100,function(){});
-			});
-		}
-		initial();
-			
+<script>	
 		$(document).ready(function(){
 				
-		$("#frontslider-editor_button").click(function(){
+		$("#frontslider-editor_button").on('touchend',function(){
 				$(this).parentsUntil('ul').children('li').removeClass('active');
 				$(this).closest('li').attr('class','bold active');
 				initial();
 				$("#about-panel").hide();
-				
-		                
 				$("#front-image-slider-panel").show(100,function(){});	
 				return false;
 				});
-			$("#frontslider-editor_buttonM").click(function(){
+		$("#frontslider-editor_buttonM").on('touchend',function(){
 				$(this).parentsUntil('ul').children('li').removeClass('active');
 				$(this).closest('li').attr('class','bold active');
 				initial();
@@ -164,7 +170,7 @@ $( document ).ready(function(){
 				$("#front-image-slider-panel").show(100,function(){});	
 				return false;
 			});
-			$("#navbar-editor_buttonM").click(function(){
+		$("#navbar-editor_buttonM").on('touchend',function(){
 				$(this).parentsUntil('ul').children('li').removeClass('active');
 				$(this).closest('li').attr('class','bold active');
 				initial();
@@ -173,7 +179,7 @@ $( document ).ready(function(){
 				$("#navbar-panel").show(100,function(){});	
 				return false;
 			});
-			$("#navbar-editor_button").click(function(){
+		$("#navbar-editor_button").on('touchend',function(){
 				$(this).parentsUntil('ul').children('li').removeClass('active');
 				$(this).closest('li').attr('class','bold active');
 				initial();
@@ -182,19 +188,19 @@ $( document ).ready(function(){
 				$("#navbar-panel").show(100,function(){});
 				return false;
 			});
-			$("#about_buttonM").click(function(){
+		$("#about_buttonM").on('touchend',function(){
 				$(this).parentsUntil('ul').find('li').attr('class','bold');
 				$(this).closest('li').attr('class','bold active');
 				initial();
 				return false;
 			});
-			$("#about_button").click(function(){
+		$("#about_button").on('touchend',function(){
 				$(this).parentsUntil('ul').find('li').attr('class','bold');
 				$(this).closest('li').attr('class','bold active');
 				initial();
 				return false;
 			});
-			$(document).on('click','a[data-id=navbar_item]',function()
+		$(document).on('touchend','a[data-id=navbar_item]',function()
 			{
 				
 				$("#nav-editor_panel").show();
@@ -206,7 +212,7 @@ $( document ).ready(function(){
 					$('#nav_object_discription').val(response.discription);
 				},'json');
 			});
-			$(document).on('click','a#update_navitem_button',function()
+		$(document).on('touchend','a#update_navitem_button',function()
 			{
 				
 				var oji=$('input#object_id').val();
@@ -222,13 +228,13 @@ $( document ).ready(function(){
 				}*/
 				//else
 				//{
-					$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_update.php",{objectid:oji,objectTitle:ojt,objectDisc:ojd},function(response)
+				$.post("http://squareonefeedback.com/CA_dept/scripts/navbar_update.php",{objectid:oji,objectTitle:ojt,objectDisc:ojd},function(response)
 					{
 						load_nav();
 						Materialize.toast('Data Saved', 4000);
 						
 					});
-					$("#nav-editor_panel").hide();
+				$("#nav-editor_panel").hide();
 				//}
 			});
 		
