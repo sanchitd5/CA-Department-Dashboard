@@ -9,11 +9,12 @@
    
     </head>
     <body background="images/background.jpg">
-    
+   
       <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
       <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
       <script type="text/javascript" src="materialize/js/init.js"></script>
 	   <script type="text/javascript" src="cordova.js"></script>
+
 <header>
 	<div class="navbar-fixed">  
 	<nav class="black" role="navigation">
@@ -63,7 +64,7 @@
 		    $.post("http://squareonefeedback.com/CA_dept/scripts/login.php",{user:username,pass:password},function(response)
 	   	    {
 			if(response=="true")
-			{;
+			{
                                 document.getElementById("login_form").reset();
 				window.location="dashboard.html";
 			}
